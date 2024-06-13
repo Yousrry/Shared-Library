@@ -2,8 +2,8 @@
 
 def call(){ 
 	withSonarQubeEnv(credentialsId: 'Sonarqube',installationName: 'Sonarqube' ) { 
-        	echo "Starting SonarQube Analysis..."
-		sh 'chmod +x gradlew'
-        	sh "./gradlew sonarqube --scan" 
+	 
+		sh" ./gradlew sonarqube -Dsonar.projectKey=SpringApp -Dsonar.host.url=http://35.174.205.184:9000  -Dsonar.login=sos"
+	 
 	}
 }
