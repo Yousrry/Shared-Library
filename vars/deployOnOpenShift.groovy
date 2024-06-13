@@ -7,8 +7,8 @@ def call(String OpenShiftCredentialsID, String openshiftClusterurl, String opens
     sh "sed -i 's|image:.*|image: ${imageName}:${BUILD_NUMBER}|g' deployment.yml"
 
     // login to OpenShift Cluster via cluster url & service account token
-    withCredentials([string(credentialsId: "${OpenShiftCredentialsID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-            sh "oc login --server=${openshiftClusterurl} --username=${USERNAME} --password=${PASSWORD}"
+    withCredentials([string(credentialsId: "${OpenShiftCredentialsID}", variable: 'OpenShift_CREDENTIALS')]) {
+            sh "oc login --server=${openshiftClusterurl} --token=${OpenShift_CREDENTIALS} --insecure-skip-tls-verify"
             sh "oc apply -f ."
     }
 
