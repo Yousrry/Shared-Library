@@ -4,6 +4,6 @@ def call(){
 	withSonarQubeEnv() { 
         	echo "Starting SonarQube Analysis..."
 		sh 'chmod +x gradlew'
-        	sh "./gradlew sonar" 
+        	sh "./gradlew sonarqube" 
 	}
 }
