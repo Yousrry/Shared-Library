@@ -8,7 +8,7 @@ def call(String OpenShiftCredentialsID, String openshiftClusterurl, String opens
 
     // login to OpenShift Cluster via cluster url & service account token
     withCredentials([string(credentialsId: "${Openshift}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-            sh "oc login --server=${openshiftClusterurl} --username=${USERNAME} --password=${PASSWORD}
+            sh "oc login --server=${openshiftClusterurl} --username=${USERNAME} --password=${PASSWORD}"
             sh "oc apply -f ."
     }
 
